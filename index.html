@@ -338,6 +338,14 @@ footer .cp{margin-top:50px;padding-top:20px;border-top:1px solid #ffffff22;font-
 .rbox{position:relative;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;font-size:14px;line-height:1.6;overflow-wrap:anywhere}.rbox button{position:absolute;top:12px;right:14px;font-size:12px;text-decoration:underline;color:var(--maroon)}
 #done{text-align:center}.tick{width:64px;height:64px;border-radius:50%;background:var(--maroon);color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto 16px}
 #done .note{color:var(--mute);margin:10px 0 14px;line-height:1.6}#done pre{text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--ivory);border-radius:12px;padding:16px;font:13px/1.6 Inter,sans-serif;margin-top:14px}
+
+/* header: wide enough for its contents, evenly spaced, clear of the hero text */
+@media(min-width:1001px){nav{width:min(1360px,calc(100% - 40px));gap:20px;padding:11px 12px 11px 28px}nav .logo,nav .visit,nav .ic{flex:none}nav ul{gap:2px;min-width:0}nav .visit{margin-left:2px}}
+@media(min-width:1521px){nav{width:min(1440px,calc(100% - 48px))}nav ul a{padding:10px 15px}}
+@media(min-width:1001px) and (max-width:1520px){nav{gap:16px;padding-left:24px}}
+@media(min-width:1001px) and (max-width:1240px){nav{gap:10px;padding-left:18px}.logo{font-size:17px}nav ul a{padding:8px 8px;font-size:13px}}
+#home{padding-top:140px}
+@media(max-width:700px){#home{padding-top:100px}}
 </style>
 </head>
 <body>
