@@ -392,7 +392,7 @@ footer .cp{margin-top:50px;padding-top:20px;border-top:1px solid #ffffff22;font-
     <h5>In this look</h5>
     <div class="items" id="items"></div>
     <div class="bundle">
-      <div class="row"><div>Complete the look<br><span class="sm" style="letter-spacing:0;text-transform:none">Bundle all 6 pieces · save 10%</span></div><div><s id="bs"></s><strong id="bp"></strong></div></div>
+      <div class="row"><div>Complete the look<br><span class="sm" style="letter-spacing:0;text-transform:none">Bundle both pieces · save 10%</span></div><div><s id="bs"></s><strong id="bp"></strong></div></div>
       <div class="go"><button class="btn m" id="addLook" style="flex:1;justify-content:space-between">Add full look to bag <i>🛍</i></button><button class="circ heart" id="lookHeart"><svg viewBox="0 0 24 24" style="width:20px"><path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.500-8 11-8 11z"/></svg></button></div>
     </div>
   </aside>
@@ -621,7 +621,7 @@ const LOOKS=[
  {n:'Purple Brick',img:'purple-brick.png',blz:'#e8c888',saree:['Royal Purple Silk with Gold Pallu',36800]},
  {n:'Red Arch',img:'red-arch.png',blz:'#e02a3a',saree:['Red and Green Banarasi Bridal Silk',46200]}
 ];
-const EXTRAS=[['Blouse','Dusty Rose Silk Blouse',4200,{a:'#c9576c',b:'#a03a52'}],['Choker','Pink Stone Temple Choker',9400,null],['Jhumkas','Jhumkas with Pearl Drops',4600,null],['Ottiyanam','Elephant Motif Ottiyanam',15000,null],['Bangles','Gold and Dusty Rose Bangle Stack',3800,null]];
+const EXTRAS=[['Blouse','Dusty Rose Silk Blouse',4200,{a:'#c9576c',b:'#a03a52'}]];
 const SILKS=[
  {t:'Red Arch',p:46200,c:'#1f4aa8',tc:'#fff3dc',img:'red-arch.png'},
  {t:'Mustard Garden',p:35400,c:'#7a2ca8',tc:'#fff3dc',img:'mustard-garden.png'},
@@ -701,7 +701,7 @@ function renderLook(){
   const tot=items.reduce((s,x)=>s+x[2],0);
   $('#items').innerHTML=items.map((x,k)=>`<div class="item${k>1?' nopic':''}">${k>1?'':`<div class="thumb"><em>${k+1}</em>${k===0?`<img src="img/${x[3].img}" alt="">`:k===1?blouse(x[3]):gem(x[0])}</div>`}<div><span class="sm">Moorpankh · ${x[0]}</span><h6>${x[1]}</h6><div class="pr">${inr(x[2])}</div></div><div class="act"><button class="heart">${HEART}</button><button class="plus" style="font-size:20px;color:var(--mute)">+</button></div></div>`).join('');
   $$('#items .heart').forEach(bindHeart);$$('#items .plus').forEach((p,k)=>p.onclick=()=>addBag(items[k][1],items[k][2],k===0?'img/'+L.img:''));
-  $('#bs').textContent=inr(tot);$('#bp').textContent=inr(Math.round(tot*.9));$('#addLook').onclick=()=>addBag('Full look · '+L.n,Math.round(tot*.9),'img/'+L.img,6);
+  $('#bs').textContent=inr(tot);$('#bp').textContent=inr(Math.round(tot*.9));$('#addLook').onclick=()=>addBag('Full look · '+L.n,Math.round(tot*.9),'img/'+L.img,2);
 }
 function gem(k){const g={Choker:'<path d="M10 30q40 50 80 0" fill="none" stroke="#d9a94a" stroke-width="6"/><circle cx="50" cy="62" r="7" fill="#e8508a"/>',Jhumkas:'<path d="M30 20l-8 36h16zM70 20l-8 36h16z" fill="#d9a94a"/><circle cx="30" cy="62" r="5" fill="#fff"/><circle cx="70" cy="62" r="5" fill="#fff"/>',Ottiyanam:'<path d="M8 50q42-30 84 0" fill="none" stroke="#d9a94a" stroke-width="7"/><circle cx="50" cy="32" r="6" fill="#c9576c"/>',Bangles:'<g fill="none" stroke-width="5"><ellipse cx="50" cy="30" rx="30" ry="7" stroke="#d9a94a"/><ellipse cx="50" cy="44" rx="30" ry="7" stroke="#e8788a"/><ellipse cx="50" cy="58" rx="30" ry="7" stroke="#d9a94a"/><ellipse cx="50" cy="72" rx="30" ry="7" stroke="#e8788a"/></g>'};return`<svg class="art" viewBox="0 0 100 100">${g[k]||''}</svg>`}
 function setLook(n){li=(n+8)%8;renderLook()}
